@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -114,6 +115,21 @@ class AddTopicFragment : Fragment() {
             }
         }
     }
+
+    private  fun getData(){
+
+        db.collection("data")
+                .get().addOnSuccessListener{result->
+                    for(document in result){
+                        Log.d("TAG","${document.id}=>${document.data}")
+                    }
+                }
+                .addOnFailureListener{exception->
+                    Log.w("TAG","Error getting documents.",exception)
+                }
+
+    }
+
 
     private fun addUploadRecordToDb(uri: String) {
 

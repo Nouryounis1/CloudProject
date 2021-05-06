@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -46,6 +47,8 @@ class DataFragment : Fragment() {
             val imageUrl = bundle.getString("imageUrl", "defaultValue")
 
 
+
+
             var tittleTv = root.findViewById<TextView>(R.id.test_tittle)
             tittleTv.text = tittle
 
@@ -67,6 +70,20 @@ class DataFragment : Fragment() {
 
 
             }
+
+
+
+            root.findViewById<Button>(R.id.editBtn).setOnClickListener {
+
+
+                activity!!.supportFragmentManager.beginTransaction().apply {
+                    replace(R.id.flFragment, EditDataFragment())
+                    commit()
+                }
+
+
+            }
+
 
 
         }

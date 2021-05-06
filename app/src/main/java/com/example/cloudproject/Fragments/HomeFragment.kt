@@ -1,6 +1,7 @@
 package com.example.cloudproject.Fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +12,7 @@ import com.example.cloudproject.DataAdapter
 import com.example.cloudproject.Models.DataModel
 import com.example.cloudproject.R
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -55,6 +54,7 @@ class HomeFragment : Fragment() {
 
         setUpRecyleView()
 
+
         // Inflate the layout for this fragment
         return root
     }
@@ -62,6 +62,9 @@ class HomeFragment : Fragment() {
 
     fun setUpRecyleView() {
         val query: Query = collectionReference
+
+
+
 
         val firseStoreRecylerOptions: FirestoreRecyclerOptions<DataModel> =
                 FirestoreRecyclerOptions.Builder<DataModel>().setQuery(query, DataModel::class.java)

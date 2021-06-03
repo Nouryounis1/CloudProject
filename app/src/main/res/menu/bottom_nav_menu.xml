@@ -15,14 +15,14 @@
     <item android:id="@+id/Placeholder"
         android:title=""
          />
-    <item android:id="@+id/settings"
-        android:title="Settings"
-        android:icon="@drawable/ic_settings"
+    <item android:id="@+id/news"
+        android:title="News"
+        android:icon="@drawable/ic_news"
         />
 
-    <item android:id="@+id/se"
-        android:title="Settings"
-        android:icon="@drawable/ic_settings"
+    <item android:id="@+id/settings"
+        android:title="Charts"
+        android:icon="@drawable/ic_baseline_bar_chart_24"
         />
 
 </menu>

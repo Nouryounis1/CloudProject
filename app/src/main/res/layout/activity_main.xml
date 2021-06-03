@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Activities.MainActivity">
 
+
     <FrameLayout
         android:id="@+id/flFragment"
         android:layout_width="match_parent"
@@ -14,26 +15,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
+
         android:id="@+id/BottomAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:fabCradleMargin="20dp"
+         app:fabCradleMargin="20dp"
         app:fabCradleRoundedCornerRadius="20dp"
+
         app:fabCradleVerticalOffset="10dp"
-        >
+         >
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-           android:id="@+id/bmNavView"
+            android:id="@+id/bmNavView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="16dp"
-
-            app:menu="@menu/bottom_nav_menu"
-            />
+            app:menu="@menu/bottom_nav_menu" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 
@@ -41,7 +43,11 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:layout_marginBottom="20dp"
+        app:layout_anchorGravity="center"
         android:src="@drawable/ic_add"
-        app:layout_anchor="@id/BottomAppBar" />
+        app:layout_anchor="@id/BottomAppBar"
+         />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

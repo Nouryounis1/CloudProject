@@ -1,4 +1,4 @@
-package com.example.cloudproject
+package com.example.cloudproject.Adapters
 
 import android.content.Context
 import android.os.Bundle
@@ -11,14 +11,17 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cloudproject.Fragments.DataFragment
+import com.example.cloudproject.Fragments.NewsDataFragment
 import com.example.cloudproject.Models.DataModel
+import com.example.cloudproject.Models.NewsModel
+import com.example.cloudproject.R
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.squareup.picasso.Picasso
 
 
-class DataAdapter(options: FirestoreRecyclerOptions<DataModel>) :
-    FirestoreRecyclerAdapter<DataModel, DataAdapter.DataAdapterVH>(options) {
+class NewsAdapter(options: FirestoreRecyclerOptions<NewsModel>) :
+    FirestoreRecyclerAdapter<NewsModel, NewsAdapter.NewsAdapterVH>(options) {
     var fragmentManager: FragmentManager? = null
 
     protected var context: Context? = null
@@ -28,18 +31,17 @@ class DataAdapter(options: FirestoreRecyclerOptions<DataModel>) :
         this.fragmentManager = fragmentManager
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataAdapterVH {
-        return DataAdapterVH(
-                LayoutInflater.from(parent.context).inflate(R.layout.mainitem, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsAdapterVH {
+        return NewsAdapterVH(
+            LayoutInflater.from(parent.context).inflate(R.layout.newsitem, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: DataAdapterVH, postion: Int, model: DataModel) {
-        holder.tittle.text = model.tittle
-        holder.topic.text = model.topic
+    override fun onBindViewHolder(holder: NewsAdapterVH, postion: Int, model: NewsModel) {
+        holder.tittleNews.text = model.tittleNews
 
 
-        if (model.imageUrl.isEmpty()) {
+        if (model.imageUrlNews.isEmpty()) {
             Picasso.get()
                 .load(R.drawable.ic_baseline_image_24)
                 .into(holder.img);
@@ -47,7 +49,7 @@ class DataAdapter(options: FirestoreRecyclerOptions<DataModel>) :
         } else {
 
             Picasso.get()
-                .load(model.imageUrl)
+                .load(model.imageUrlNews)
                 .into(holder.img)
 
 
@@ -59,21 +61,21 @@ class DataAdapter(options: FirestoreRecyclerOptions<DataModel>) :
             val snapshot = snapshots.getSnapshot(holder.adapterPosition)
             snapshot.id
 
-            val fragment = DataFragment()
-            val bundle = Bundle()
-            bundle.putString("tittle", model.tittle);
-            bundle.putString("topic", model.topic);
-            bundle.putString("docid", snapshot.id);
+            val fragment = NewsDataFragment()
+            val bundle3 = Bundle()
+            bundle3.putString("tittleNews", model.tittleNews);
+            bundle3.putString("topicNews", model.topicNews);
+            bundle3.putString("sourceNews", model.sourceNews);
+            bundle3.putString("docid", snapshot.id);
 
-            if (model.imageUrl != null) {
+            if (model.imageUrlNews != null) {
 
-                bundle.putString("imageUrl", model.imageUrl);
+                bundle3.putString("imageUrlNews", model.imageUrlNews);
 
             }
-            fragment.arguments = bundle;
+            fragment.arguments = bundle3;
             manager.beginTransaction().apply {
                 replace(R.id.flFragment, fragment)
-                    .addToBackStack(null)
                 commit()
 
             }
@@ -83,11 +85,10 @@ class DataAdapter(options: FirestoreRecyclerOptions<DataModel>) :
     }
 
 
-    inner class DataAdapterVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class NewsAdapterVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var tittle: TextView = itemView.findViewById<TextView>(R.id.item_title)
-        var img: ImageView = itemView.findViewById(R.id.item_image)
-        var topic: TextView = itemView.findViewById(R.id.item_topic)
+        var tittleNews: TextView = itemView.findViewById<TextView>(R.id.item_title2)
+        var img: ImageView = itemView.findViewById(R.id.item_image2)
 
 
     }

@@ -25,7 +25,12 @@
             android:layout_height="wrap_content"
             android:text="Edit"
             android:textSize="20sp" />
-
+        <Button
+            android:id="@+id/deleteBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:textSize="20sp" />
         <TextView
             android:id="@+id/test_tittle"
             android:layout_width="match_parent"
@@ -40,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Tittle"
+            android:text="Topic"
             android:textSize="20dp"
             android:textStyle="normal" />
 

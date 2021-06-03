@@ -8,8 +8,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/card_view"
         android:layout_margin="8dp"
-     app:cardBackgroundColor="@color/white"
-           >
+    app:cardBackgroundColor="@color/white"
+            >
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

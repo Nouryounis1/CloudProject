@@ -3,10 +3,7 @@ package com.example.cloudproject.Activities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.cloudproject.Fragments.AddTopicFragment
-import com.example.cloudproject.Fragments.HomeFragment
-import com.example.cloudproject.Fragments.MapFragment
-import com.example.cloudproject.Fragments.SettingsFragment
+import com.example.cloudproject.Fragments.*
 import com.example.cloudproject.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -21,11 +18,15 @@ class MainActivity : AppCompatActivity() {
         bmNavView.background = null
         bmNavView.menu.getItem(2).isEnabled = false
 
+
         val MapFragment = MapFragment()
         val HomeFragment = HomeFragment()
         val SettingsFragment = SettingsFragment()
+        val NewsFragment = NewsFragment()
         setCurrentFragment(HomeFragment)
         fab = findViewById(R.id.fab)
+
+
         fab.setOnClickListener {
 
             supportFragmentManager.beginTransaction().apply {
@@ -38,10 +39,24 @@ class MainActivity : AppCompatActivity() {
 
         bmNavView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.home -> setCurrentFragment(HomeFragment)
-                R.id.map -> setCurrentFragment(MapFragment)
-                R.id.settings -> setCurrentFragment(SettingsFragment)
+                R.id.home -> {
+                    setCurrentFragment(HomeFragment)
 
+                }
+                R.id.map -> {
+                    setCurrentFragment(MapFragment)
+
+                }
+                R.id.news -> {
+                    setCurrentFragment(NewsFragment)
+
+
+                }
+                R.id.settings -> {
+                    setCurrentFragment(SettingsFragment)
+
+
+                }
             }
             true
         }
